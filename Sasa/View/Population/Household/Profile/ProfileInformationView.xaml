@@ -1,0 +1,107 @@
+﻿<UserControl
+    x:Class="Sasa.View.Population.Household.Profile.ProfileInformationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:family="clr-namespace:Sasa.View.Population.Household.Family"
+    xmlns:local="clr-namespace:Sasa.View.Population.Household.Profile"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    DataContext="{Binding Path=HouseholdProfileModule.SelectedHousehold, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <Grid>
+
+
+        <materialDesign:Card
+            Grid.Row="0"
+            Margin="0,3,0,3"
+            Padding="5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            materialDesign:ShadowAssist.ShadowDepth="Depth2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <materialDesign:ColorZone
+                    Padding="7"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    Mode="PrimaryMid">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="WhiteSmoke"
+                            Text="PROFILE" />
+                        <StackPanel
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+
+                            <Button
+                                Margin="3,0,3,0"
+                                Padding="0"
+                                Command="{Binding Path=PersonModule.PrintHouseholdCommand, Source={StaticResource Locator}}"
+                                Style="{DynamicResource MaterialDesignFlatButton}"
+                                ToolTip="Print Household information">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    Foreground="{StaticResource SecondaryAccentBrush}"
+                                    Kind="Printer" />
+                            </Button>
+
+                            <Button
+                                Margin="3,0,3,0"
+                                Padding="0"
+                                materialDesign:HintAssist.Hint="Edit selected purok"
+                                Command="{Binding Path=PersonModule.SelectedHousehold.EditCommand, Source={StaticResource Locator}}"
+                                Style="{DynamicResource MaterialDesignFlatButton}"
+                                ToolTip="Edit selected household."
+                                Visibility="{Binding Path=EmployeeModule.EmployeeLogged.IsAllowedToEdit, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=inverse, Source={StaticResource Locator}}">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    Foreground="{StaticResource SecondaryAccentBrush}"
+                                    Kind="Pencil" />
+                            </Button>
+                        </StackPanel>
+
+                    </Grid>
+                </materialDesign:ColorZone>
+
+                <StackPanel
+                    Grid.Row="1"
+                    Margin="5"
+                    DataContext="{Binding Path=PersonModule.SelectedHousehold, Source={StaticResource Locator}}">
+
+
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Style="{StaticResource txtInfo}" Text="{Binding Path=Model.HouseNo}" />
+                        <TextBlock
+                            FontSize="12"
+                            Style="{StaticResource txtInfo}"
+                            Text="{Binding Path=Model.Address}" />
+
+                    </StackPanel>
+
+
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+
+
+
+
+
+
+
+    </Grid>
+</UserControl>

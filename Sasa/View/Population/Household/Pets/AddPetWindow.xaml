@@ -1,0 +1,96 @@
+﻿<Window x:Class="Sasa.View.Population.Household.Pets.AddPetWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sasa.View.Population.Household.Pets"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterOwner"
+        DataContext="{Binding Path=HouseholdPetsModule.LivestockNewModel, Source={StaticResource Locator}}"
+        Title="AddPetWindow" Height="550" Width="370">
+
+    <materialDesign:Card Padding="3" 
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch"
+                             materialDesign:ShadowAssist.ShadowDepth="Depth3">
+        <Grid Margin="7">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <materialDesign:ColorZone   Padding="7,10"
+                                            Margin="3"
+                                            materialDesign:ShadowAssist.ShadowDepth="Depth2" 
+                                            Mode="PrimaryMid">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="ADD PET"
+                                   VerticalAlignment="Center"
+                                   Foreground="WhiteSmoke"></TextBlock>
+
+
+                </Grid>
+            </materialDesign:ColorZone>
+
+            <StackPanel Grid.Row="1" Margin="3,13">
+
+
+                
+                
+                <StackPanel Margin="0,0,0,15">
+                    <TextBlock Text="ANIMAL" Style="{StaticResource txtDisplayLabel}"
+                           ></TextBlock>
+                    <ComboBox SelectedItem="{Binding Path=Animal, UpdateSourceTrigger=PropertyChanged}"
+                              
+                              Style="{StaticResource cmbStyle}"
+                              ItemsSource="{Binding Path=Pets}"
+                           ></ComboBox>
+                </StackPanel>
+
+                
+
+                <StackPanel Margin="0,3,0,15">
+                    <TextBlock Text="MALE" Style="{StaticResource txtDisplayLabel}"></TextBlock>
+                    <TextBox Text="{Binding Path=Male, UpdateSourceTrigger=PropertyChanged}"
+                                 Style="{StaticResource tbAdd}"
+                                 TextWrapping="Wrap"
+                           ></TextBox>
+                </StackPanel>
+
+                <StackPanel Margin="0,3,0,15">
+                    <TextBlock Text="FEMALE" Style="{StaticResource txtDisplayLabel}"></TextBlock>
+                    <TextBox Text="{Binding Path=Female, UpdateSourceTrigger=PropertyChanged}"
+                                 Style="{StaticResource tbAdd}"
+                                 TextWrapping="Wrap"
+                           ></TextBox>
+                </StackPanel>
+
+                <StackPanel Margin="0,3,0,15">
+                    <TextBlock Text="VACCINATED" Style="{StaticResource txtDisplayLabel}"></TextBlock>
+                    <TextBox Text="{Binding Path=IsVaccinated, UpdateSourceTrigger=PropertyChanged}"
+                                 Style="{StaticResource tbAdd}"
+                                 TextWrapping="Wrap"
+                           ></TextBox>
+                </StackPanel>
+
+
+
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Command="{Binding Path=HouseholdPetsModule.CancelPetCommand, Source={StaticResource Locator}}" Content="CANCEL" Width="90" Margin="3" ></Button>
+                <Button Command="{Binding Path=HouseholdPetsModule.SavePetCommand, Source={StaticResource Locator}}" Content="SAVE" Width="90" Margin="3"></Button>
+            </StackPanel>
+
+        </Grid>
+
+
+    </materialDesign:Card>
+</Window>

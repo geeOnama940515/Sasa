@@ -1,0 +1,280 @@
+﻿<Window
+    x:Class="Sasa.View.Employee.AddingEmployeeWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Sasa.View.Employee"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Add Employee"
+    Width="650"
+    Height="450"
+    mc:Ignorable="d">
+    <materialDesign:Card
+        Padding="5"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+        Visibility="{Binding Path=EmployeeModule.SelectedEmployee.isEditing, Converter={StaticResource BoolToVisibilityConverter}, Source={StaticResource Locator}}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <materialDesign:ColorZone
+                Padding="7"
+                materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                Mode="PrimaryMid">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Foreground="WhiteSmoke"
+                        Text="ADD EMPLOYEE" />
+
+                    <StackPanel
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal">
+
+                        <Button
+                            Margin="3,0,3,0"
+                            Padding="0"
+                            materialDesign:HintAssist.Hint="Edit selected purok"
+                            Command="{Binding Path=EmployeeModule.SaveEmployeeCommand, Source={StaticResource Locator}}"
+                            Style="{DynamicResource MaterialDesignFlatButton}"
+                            ToolTip="Add household head">
+                            <materialDesign:PackIcon
+                                Width="24"
+                                Height="24"
+                                Foreground="{StaticResource SecondaryAccentBrush}"
+                                Kind="ContentSave" />
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+            </materialDesign:ColorZone>
+            <Grid
+                Grid.Row="1"
+                Margin="5"
+                DataContext="{Binding Path=EmployeeModule.NewEmployee, Source={StaticResource Locator}}">
+                <StackPanel>
+                    <Grid Margin="0,5,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Style="{StaticResource txtDisplayLabel}"
+                            Text="FIRST NAME" />
+
+                        <TextBox
+                            Grid.Row="1"
+                            MaxWidth="200"
+                            Text="{Binding Path=Person.ModelCopy.FirstName, UpdateSourceTrigger=PropertyChanged}"
+                            TextWrapping="Wrap" />
+
+
+                        <TextBlock
+                            Grid.Column="1"
+                            Style="{StaticResource txtDisplayLabel}"
+                            Text="MIDDLE NAME" />
+
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            MaxWidth="200"
+                            Text="{Binding Path=Person.ModelCopy.MiddleName, UpdateSourceTrigger=PropertyChanged}"
+                            TextWrapping="Wrap" />
+
+
+                        <TextBlock
+                            Grid.Column="2"
+                            Style="{StaticResource txtDisplayLabel}"
+                            Text="LAST NAME" />
+
+                        <TextBox
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            MaxWidth="200"
+                            Text="{Binding Path=Person.ModelCopy.LastName, UpdateSourceTrigger=PropertyChanged}"
+                            TextWrapping="Wrap" />
+
+                    </Grid>
+
+                    <Grid Margin="0,0,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+
+
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="BIRTHDATE" />
+                            <DatePicker MaxWidth="200" SelectedDate="{Binding Path=Person.ModelCopy.Birthdate}" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="BIRTH PLACE" />
+                            <TextBox
+                                MaxWidth="200"
+                                Text="{Binding Person.ModelCopy.Birthplace, UpdateSourceTrigger=PropertyChanged}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="EDUCATION" />
+                            <ComboBox ItemsSource="{Binding Path=AttainmentList}" SelectedItem="{Binding Path=Person.Model.Attainment}" />
+                        </StackPanel>
+
+
+                    </Grid>
+
+                    <Grid Margin="0,0,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="TRIBE" />
+                            <TextBox
+                                MaxWidth="200"
+                                Text="{Binding Path=Person.ModelCopy.Tribe, UpdateSourceTrigger=PropertyChanged}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="RELIGION" />
+                            <TextBox
+                                MaxWidth="200"
+                                Text="{Binding Path=Person.ModelCopy.Religion, UpdateSourceTrigger=PropertyChanged}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="DIALECT" />
+                            <TextBox
+                                MaxWidth="200"
+                                Text="{Binding Path=Person.ModelCopy.Dialect, UpdateSourceTrigger=PropertyChanged}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+
+                    </Grid>
+
+                    <Grid Margin="0,0,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="OCCUPATION" />
+                            <TextBox
+                                MaxWidth="200"
+                                Text="{Binding Path=Person.ModelCopy.Occupation, UpdateSourceTrigger=PropertyChanged}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="MONTHLY INCOME" />
+                            <TextBox
+                                MaxWidth="200"
+                                Text="{Binding Path=Person.ModelCopy.Income, UpdateSourceTrigger=PropertyChanged}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="ORGANIZATIONS" />
+                            <TextBox
+                                MaxWidth="200"
+                                Text="{Binding Path=Person.ModelCopy.Organization, UpdateSourceTrigger=PropertyChanged}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+
+
+                    </Grid>
+
+                    <Grid Margin="0,5,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Style="{StaticResource txtDisplayLabel}" Text="SEX" />
+                        <TextBlock
+                            Grid.Column="1"
+                            Style="{StaticResource txtDisplayLabel}"
+                            Text="CIVIL STATUS" />
+                        <TextBlock
+                            Grid.Column="2"
+                            Style="{StaticResource txtDisplayLabel}"
+                            Text="HOUSEHOLD NO." />
+
+                        <ComboBox
+                            Grid.Row="1"
+                            Margin="0,0,5,0"
+                            ItemsSource="{Binding Path=GenderList}"
+                            SelectedItem="{Binding Path=Person.ModelCopy.Gender}" />
+                        <ComboBox
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="0,0,5,0"
+                            ItemsSource="{Binding Path=StatusList}"
+                            SelectedItem="{Binding Path=Person.ModelCopy.CivilStatus}" />
+                        <ComboBox
+                            Grid.Row="1"
+                            Grid.Column="2"
+                            Margin="0,0,5,0"
+                            ItemsSource="{Binding Path=Households}"
+                            SelectedItem="{Binding Path=Household}" />
+                    </Grid>
+
+                    <Grid Margin="0,5,0,5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="208" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Style="{StaticResource txtDisplayLabel}" Text="POSITION" />
+                        <ComboBox
+                            Grid.Row="1"
+                            Margin="0,0,5,0"
+                            ItemsSource="{Binding Path=PositionList}"
+                            SelectedItem="{Binding Path=Position}" />
+                    </Grid>
+
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </materialDesign:Card>
+</Window>

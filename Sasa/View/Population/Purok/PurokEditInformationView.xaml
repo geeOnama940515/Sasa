@@ -1,0 +1,267 @@
+﻿<UserControl
+    x:Class="Sasa.View.Population.Purok.PurokEditInformationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Sasa.View.Population.Purok"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="650"
+    d:DesignWidth="650"
+    DataContext="{Binding Path=PurokModule.SelectedPurok, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <Grid>
+        <materialDesign:Card
+            Padding="5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            materialDesign:ShadowAssist.ShadowDepth="Depth3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <materialDesign:ColorZone
+                    Padding="7"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    Mode="PrimaryMid">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="WhiteSmoke"
+                            Text="EDIT PUROK INFORMATION" />
+
+                        <StackPanel
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+
+                            <Button
+                                Margin="3,0,3,0"
+                                Padding="0"
+                                Command="{Binding Path=CancelEditCommand}"
+                                ToolTip="Cancel household changes"
+                                Style="{DynamicResource MaterialDesignFlatButton}">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    Foreground="{StaticResource SecondaryAccentBrush}"
+                                    Kind="BlockHelper" />
+                            </Button>
+
+                            <Button
+                                Margin="3,0,3,0"
+                                Padding="0"
+                                Command="{Binding Path=SaveEditCommand}"
+                                ToolTip="Save household changes"
+                                Style="{DynamicResource MaterialDesignFlatButton}">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    Foreground="{StaticResource SecondaryAccentBrush}"
+                                    Kind="ContentSave" />
+                            </Button>
+
+                        </StackPanel>
+
+
+                    </Grid>
+                </materialDesign:ColorZone>
+
+                <StackPanel
+                    Grid.Row="1"
+                    Margin="7,10,0,0"
+                    DataContext="{Binding Path=PurokModule.SelectedPurok, ValidatesOnNotifyDataErrors=False, Source={StaticResource Locator}}">
+
+
+                    <StackPanel Margin="0,10,0,10">
+                        <TextBlock Style="{StaticResource txtDisplayLabel}" Text="NAME" />
+                        <TextBox
+                            Style="{StaticResource tbAdd}"
+                            Text="{Binding Path=EditModel.PurokName, UpdateSourceTrigger=PropertyChanged}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <StackPanel Margin="0,10,0,10">
+                        <TextBlock Style="{StaticResource txtDisplayLabel}" Text="LOCATION" />
+                        <TextBox
+                            Style="{StaticResource tbAdd}"
+                            Text="{Binding Path=EditModel.Location, UpdateSourceTrigger=PropertyChanged}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+
+
+                    <StackPanel Margin="0,10,0,15">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="LEADER" />
+
+                        </StackPanel>
+
+
+<!--                        <ComboBox-->
+<!---->
+<!--                            Margin="0,5,0,10"-->
+<!---->
+<!---->
+<!--                            ItemsSource="{Binding Path=Constituents}"-->
+<!--                            SelectedItem="{Binding EditModel.SelectedPerson}">-->
+<!--                            <ComboBox.ItemTemplate>-->
+<!--                                <DataTemplate>-->
+<!--                                    <TextBlock>-->
+<!--                                        <TextBlock.Text>-->
+<!--                                            <MultiBinding StringFormat="{}{0}, {1}">-->
+<!--                                                <Binding Path="Model.LastName" UpdateSourceTrigger="PropertyChanged" />-->
+<!--                                                <Binding Path="Model.FirstName" UpdateSourceTrigger="PropertyChanged" />-->
+<!--                                            </MultiBinding>-->
+<!--                                        </TextBlock.Text>-->
+<!--                                    </TextBlock>-->
+<!--                                </DataTemplate>-->
+<!--                            </ComboBox.ItemTemplate>-->
+<!--                        </ComboBox>-->
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon
+                                Width="25"
+                                Height="25"
+                                VerticalAlignment="Bottom"
+                                Foreground="Gray"
+                                Kind="Magnify" />
+                            <TextBox
+                                MinWidth="200"
+                                Style="{StaticResource tbAdd}"
+                                Text="{Binding Path=Search, UpdateSourceTrigger=PropertyChanged}"
+                                TextWrapping="Wrap" />
+                        </StackPanel>
+                        <DataGrid
+                            Height="200"
+                            Background="Transparent"
+                            MaxHeight="200"
+                            Margin="0,5,0,10"
+                            AutoGenerateColumns="False"
+                            BorderBrush="Transparent"
+                            CellStyle="{StaticResource DataGridStyle}"
+                            HorizontalScrollBarVisibility="Auto"
+                            ItemsSource="{Binding Path=Constituents}"
+                            SelectedItem="{Binding EditModel.SelectedPerson}">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="100">
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock
+                                            FontSize="12"
+                                            FontWeight="DemiBold"
+                                            Style="{StaticResource txtDisplayLabel}"
+                                            Text="First Name" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Margin="15,0,0,0"
+                                                Text="{Binding Model.FirstName}"
+                                                TextWrapping="Wrap" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="100">
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock
+                                            FontSize="12"
+                                            FontWeight="DemiBold"
+                                            Style="{StaticResource txtDisplayLabel}"
+                                            Text="Middle Name" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Margin="15,0,0,0"
+                                                Text="{Binding Model.MiddleName}"
+                                                TextWrapping="Wrap" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="100">
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock
+                                            FontSize="12"
+                                            FontWeight="DemiBold"
+                                            Style="{StaticResource txtDisplayLabel}"
+                                            Text="Last Name" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Margin="15,0,0,0"
+                                                Text="{Binding Model.LastName}"
+                                                TextWrapping="Wrap" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="100">
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock
+                                            FontSize="12"
+                                            FontWeight="DemiBold"
+                                            Style="{StaticResource txtDisplayLabel}"
+                                            Text="Age" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Margin="15,0,0,0"
+                                                Text="{Binding Model.Age}"
+                                                TextWrapping="Wrap" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="100">
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock
+                                            FontSize="12"
+                                            FontWeight="DemiBold"
+                                            Style="{StaticResource txtDisplayLabel}"
+                                            Text="House No." />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Margin="15,0,0,0"
+                                                Text="{Binding Model.HouseNo}"
+                                                TextWrapping="Wrap" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn Width="100">
+                                    <DataGridTemplateColumn.Header>
+                                        <TextBlock
+                                            FontSize="12"
+                                            FontWeight="DemiBold"
+                                            Style="{StaticResource txtDisplayLabel}"
+                                            Text="Occupation" />
+                                    </DataGridTemplateColumn.Header>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                Margin="15,0,0,0"
+                                                Text="{Binding Model.Occupation}"
+                                                TextWrapping="Wrap" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                </StackPanel>
+
+
+            </Grid>
+
+
+        </materialDesign:Card>
+
+
+    </Grid>
+</UserControl>

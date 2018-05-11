@@ -1,0 +1,112 @@
+﻿<Window
+    x:Class="Sasa.View.Login.LoginWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Barangay Sasa Information System"
+    Width="1280"
+    Height="720"
+    Background="{StaticResource PrimaryHueDarkBrush}"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized"
+    mc:Ignorable="d">
+    <Grid HorizontalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Margin="0,20,0,10"
+            FontFamily="Segoe UI Light"
+            FontSize="30"
+            Foreground="WhiteSmoke"
+            Text="BARANGAY SASA INFORMATION SYSTEM" />
+
+        <Image
+            Grid.Row="1"
+            Width="150"
+            Height="150"
+            Margin="10"
+            Source="../../Images/SEAL.png" />
+
+        <TextBlock
+            Name="timer"
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            FontFamily="Segoe UI Light"
+            FontSize="45"
+            Foreground="WhiteSmoke"
+            Text="" />
+
+        <TextBlock
+            Name="date"
+            Grid.Row="3"
+            HorizontalAlignment="Center"
+            FontFamily="Segoe UI Light"
+            FontSize="20"
+            Foreground="WhiteSmoke"
+            Text="" />
+
+        <StackPanel
+            Grid.Row="4"
+            Margin="0,10,0,0"
+            
+            HorizontalAlignment="Center">
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <materialDesign:PackIcon
+                    Width="35"
+                    VerticalAlignment="Center"
+                    Height="35"
+                    Foreground="{StaticResource SecondaryAccentBrush}"
+                    Kind="Account" />
+                <TextBox
+                    Name="txtUsername"
+                    Width="150"
+                    FontSize="25"
+                    FontWeight="Thin"
+                    Margin="10,0,0,0"
+                    materialDesign:HintAssist.Hint="Username"
+                    Foreground="{StaticResource PrimaryHueLightBrush}"
+                    Text="{Binding Path=EmployeeModule.UserName, Source={StaticResource Locator}, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <StackPanel Margin="5" Orientation="Horizontal">
+                <materialDesign:PackIcon
+                    Width="35"
+                    
+                    Height="35"
+                    VerticalAlignment="Center"
+                    Foreground="{StaticResource SecondaryAccentBrush}"
+                    Kind="Lock" />
+                <PasswordBox
+                    x:Name="UserPasswordBox"
+                    Width="150"
+                    FontWeight="Thin"
+                    FontSize="25"
+                    Margin="10,0,0,0"
+                    materialDesign:HintAssist.Hint="Password"
+                    Foreground="{StaticResource PrimaryHueLightBrush}" />
+            </StackPanel>
+
+            <StackPanel Margin="0,10,0,0">
+                <Button
+                    Background="{StaticResource PrimaryHueMidBrush}"
+                    Command="{Binding Path=EmployeeModule.LoginCommand, Source={StaticResource Locator}}"
+                    Content="LOGIN"
+                    Foreground="WhiteSmoke"
+                    Style="{StaticResource MaterialDesignRaisedButton}" />
+            </StackPanel>
+        </StackPanel>
+
+
+
+
+
+    </Grid>
+</Window>

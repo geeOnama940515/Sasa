@@ -1,0 +1,114 @@
+﻿<UserControl
+    x:Class="Sasa.View.Employee.EmployeeListWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Sasa.View.Employee"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <Grid>
+        <materialDesign:Card
+            Padding="5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            materialDesign:ShadowAssist.ShadowDepth="Depth2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <materialDesign:ColorZone
+                    Padding="7"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    Mode="PrimaryMid">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="WhiteSmoke"
+                            Text="EMPLOYEE LIST" />
+                        <StackPanel
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+
+
+                            <Button
+                                Margin="3,0,3,0"
+                                Padding="0"
+                                materialDesign:HintAssist.Hint="Remove selected household"
+                                Command="{Binding Path=EmployeeModule.DeleteEmployeeCommand, Source={StaticResource Locator}}"
+                                Style="{DynamicResource MaterialDesignFlatButton}"
+                                ToolTip="Remove selected household"
+                                Visibility="{Binding Path=EmployeeModule.EmployeeLogged.IsAllowedToDeleteEmployee, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=inverse, Source={StaticResource Locator}}">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    Foreground="{StaticResource SecondaryAccentBrush}"
+                                    Kind="Delete" />
+                            </Button>
+
+                            <Button
+                                Margin="3,0,3,0"
+                                Padding="0"
+                                materialDesign:HintAssist.Hint="Add a new household"
+                                Command="{Binding Path=EmployeeModule.AddEmployeeCommand, Source={StaticResource Locator}}"
+                                Style="{DynamicResource MaterialDesignFlatButton}"
+                                ToolTip="Add a new household"
+                                Visibility="{Binding Path=EmployeeModule.EmployeeLogged.IsAllowedToAddEmployee, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=inverse, Source={StaticResource Locator}}">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    Foreground="{StaticResource SecondaryAccentBrush}"
+                                    Kind="Plus" />
+                            </Button>
+                        </StackPanel>
+
+                    </Grid>
+                </materialDesign:ColorZone>
+
+                <Grid Grid.Row="1" Margin="0,3,0,3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+
+                <ListBox
+                    Grid.Row="2"
+                    Margin="0,3,0,0"
+                    ItemsSource="{Binding Path=EmployeeModule.Employees, Source={StaticResource Locator}}"
+                    SelectedItem="{Binding Path=EmployeeModule.SelectedEmployee, Source={StaticResource Locator}}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock DataContext="{Binding Path=Person}" Style="{StaticResource txtInfo}">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                                            <Binding Path="Model.FirstName" />
+                                            <Binding Path="Model.MiddleName" />
+                                            <Binding Path="Model.LastName" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <TextBlock
+                                    FontSize="12"
+                                    FontStyle="Italic"
+                                    Style="{StaticResource txtInfo}"
+                                    Text="{Binding Path=Model.EmployeeId}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

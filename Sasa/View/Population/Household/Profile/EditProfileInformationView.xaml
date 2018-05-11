@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="Sasa.View.Population.Household.Profile.EditProfileInformationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sasa.View.Population.Household.Profile"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             DataContext="{Binding Path=PersonModule.SelectedHousehold, Source={StaticResource Locator}}"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <materialDesign:Card
+            Margin="0,3,0,3"
+            Grid.Row="0"
+            Padding="5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            materialDesign:ShadowAssist.ShadowDepth="Depth2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <materialDesign:ColorZone
+                    Padding="7"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    Mode="PrimaryMid">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="WhiteSmoke"
+                            Text="EDIT PROFILE" />
+                        <StackPanel
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+
+                            <Button
+                                Margin="3,0,3,0"
+                                Padding="0"
+                                Command="{Binding Path=CancelEditCommand}"
+                                ToolTip="Cancel household changes"
+                                Style="{DynamicResource MaterialDesignFlatButton}">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    Foreground="{StaticResource SecondaryAccentBrush}"
+                                    Kind="BlockHelper" />
+                            </Button>
+                            
+                            <Button
+                                Margin="3,0,3,0"
+                                Padding="0"
+                                Command="{Binding Path=SaveEditCommand}"
+                                ToolTip="Save household changes"
+                                Style="{DynamicResource MaterialDesignFlatButton}">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    Foreground="{StaticResource SecondaryAccentBrush}"
+                                    Kind="ContentSave" />
+                            </Button>
+
+                        </StackPanel>
+
+                    </Grid>
+                </materialDesign:ColorZone>
+
+                <StackPanel
+                    Grid.Row="1"
+                    Margin="5"
+                    DataContext="{Binding Path=PersonModule.SelectedHousehold.EditModel, ValidatesOnNotifyDataErrors=False, Source={StaticResource Locator}}">
+
+
+               
+
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Style="{StaticResource txtDisplayLabel}" Text="ADDRESS" />
+                        <TextBox Style="{StaticResource tbAdd}" Text="{Binding Path=Address, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+
+
+                </StackPanel>
+            </Grid>
+        </materialDesign:Card>
+            
+    </Grid>
+</UserControl>

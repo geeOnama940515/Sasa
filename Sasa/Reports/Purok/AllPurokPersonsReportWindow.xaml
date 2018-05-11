@@ -1,0 +1,199 @@
+﻿<Window x:Class="Sasa.Reports.Purok.AllPurokPersonsReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sasa.Reports.Purok"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+
+        WindowState="Maximized"
+        Title="All Purok Report" Height="800" Width="1280">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".3*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <TextBlock Text="POPULATION" FontWeight="Thin"
+                           Foreground="{StaticResource PrimaryHueDarkBrush}"
+                           FontSize="30"
+                           Margin="0,5,0,0"
+                           HorizontalAlignment="Center" />
+                <TextBlock Text="SELECTED PUROK REPORT"
+                           FontWeight="Thin"
+                           Foreground="{StaticResource PrimaryHueDarkBrush}"
+                           FontSize="12"
+
+                           HorizontalAlignment="Center" />
+
+            </StackPanel>
+
+            <StackPanel
+                Grid.Row="1"
+                Margin="5,50,5,0"
+                HorizontalAlignment="Stretch">
+
+                <TextBlock Text="FILTER OPTIONS" FontSize="20"
+                           FontWeight="Normal"
+                           Margin="5,0,0,0"
+                           HorizontalAlignment="Center"
+                           Foreground="{StaticResource PrimaryHueDarkBrush}" />
+
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Style="{StaticResource txtDisplayLabel}"
+                        Text="Gender" />
+                    <ComboBox
+                        Width="100"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"
+                        FontSize="16"
+
+                        ItemsSource="{Binding Path=GenderList}"
+                        SelectedItem="{Binding Path=SelectedGender}" />
+                </Grid>
+
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Style="{StaticResource txtDisplayLabel}"
+                        Text="Occupation" />
+                    <TextBox
+                        Width="100"
+                        Grid.Column="1"
+                        Text="{Binding Path=Occupation, UpdateSourceTrigger=PropertyChanged, Delay=333}"
+                        HorizontalAlignment="Right"
+                        FontSize="16"
+
+                         />
+                </Grid>
+
+
+                <Grid Margin="0,20,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+
+                    <Grid Margin="0,10,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="16"
+                            Style="{StaticResource txtDisplayLabel}"
+                            Text="Age Start" />
+                        <TextBox
+                            HorizontalAlignment="Right"
+                            Width="100"
+                            Grid.Column="1"
+                            Margin="0,2,0,38"
+                            FontSize="12"
+                            Text="{Binding Path=StartAge, UpdateSourceTrigger=PropertyChanged, Delay=333}" Grid.RowSpan="2" />
+
+                        <TextBlock
+                            Margin="0,15,0,0"
+                            Grid.Row="1"
+                            VerticalAlignment="Center"
+                            FontSize="16"
+                            Style="{StaticResource txtDisplayLabel}"
+                            Text="Age End" />
+                        <TextBox
+                            
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Width="100"
+                            HorizontalAlignment="Right"
+                            Margin="3,15,0,0"
+                            FontSize="12"
+                            Text="{Binding Path=EndAge, UpdateSourceTrigger=PropertyChanged, Delay=333}" />
+                    </Grid>
+
+
+
+                </Grid>
+          
+                <Grid Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Voters"
+                               FontSize="16"
+                               Style="{StaticResource txtDisplayLabel}"
+                               ></TextBlock>
+
+                    <CheckBox Grid.Column="1"
+                              HorizontalAlignment="Right"
+                              IsChecked="{Binding Path=IsVoter, UpdateSourceTrigger=PropertyChanged, Delay=333}"
+                              ></CheckBox>
+                </Grid>
+
+                <Grid Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Birth Certificates"
+                               FontSize="16"
+                               Style="{StaticResource txtDisplayLabel}"
+                               ></TextBlock>
+
+                    <CheckBox Grid.Column="1"
+                              HorizontalAlignment="Right"
+                              IsChecked="{Binding Path=HasCert, UpdateSourceTrigger=PropertyChanged, Delay=333}"
+                              ></CheckBox>
+                </Grid>
+
+                <StackPanel Margin="0,20,0,0">
+                    <TextBlock Text="COLUMNS"></TextBlock>
+                    <StackPanel>
+                        <CheckBox Content="Gender" IsChecked="{Binding Path=IsGenderChecked}"></CheckBox>
+                        <CheckBox Content="Age" IsChecked="{Binding Path=IsAgeChecked}"></CheckBox>
+                        <CheckBox Content="Occupation" IsChecked="{Binding Path=IsOccupationChecked}"></CheckBox>
+                        <CheckBox Content="Tribe" IsChecked="{Binding Path=IsTribeChecked}"></CheckBox>
+                        <CheckBox Content="Attainment" IsChecked="{Binding Path=IsAttainmentChecked}"></CheckBox>
+                        <CheckBox Content="Date Of Birth" IsChecked="{Binding Path=IsDateOfBirthChecked}"></CheckBox>
+                        <CheckBox Content="Registered Voter" IsChecked="{Binding Path=IsVoterChecked}"></CheckBox>
+                        <CheckBox Content="Dead" IsChecked="{Binding Path=IsDeadChecked}"></CheckBox>
+                        <CheckBox Content="Birth Certificate" IsChecked="{Binding Path=IsBirthCertChecked}"></CheckBox>
+                    </StackPanel>
+                </StackPanel>
+
+
+
+            </StackPanel>
+
+        </Grid>
+        <ContentControl x:Name="ReportContainer" Grid.Column="1" />
+    </Grid>
+</Window>

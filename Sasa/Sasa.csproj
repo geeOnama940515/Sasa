@@ -1,0 +1,636 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D1692343-776C-4933-AE29-686769932782}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sasa</RootNamespace>
+    <AssemblyName>Sasa</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dragablz, Version=0.0.3.178, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dragablz.0.0.3.178\lib\net45\Dragablz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.MahApps, Version=0.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.MahApps.0.0.8\lib\net45\MaterialDesignThemes.MahApps.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.2.0.725, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.2.0.725\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="DataAccess\EfDataService.cs" />
+    <Compile Include="DataAccess\EfRepository.cs" />
+    <Compile Include="DataAccess\EF\SasaGenerator.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SasaGenerator.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataAccess\IDataService.cs" />
+    <Compile Include="DataAccess\IRepository.cs" />
+    <Compile Include="Helpers\ReportViewer\DataSetValuePair.cs" />
+    <Compile Include="Helpers\ReportViewer\ReportView.xaml.cs">
+      <DependentUpon>ReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ReportViewer\ReportViewBuilder.cs" />
+    <Compile Include="Helpers\ReportViewer\SingleInstanceWindowViewer.cs" />
+    <Compile Include="Models\Accessor\AccessorModel.cs" />
+    <Compile Include="Models\Case\CaseEditModel.cs" />
+    <Compile Include="Models\Case\CaseModel.cs" />
+    <Compile Include="Models\Clearance\ClearanceEditModel.cs" />
+    <Compile Include="Models\Clearance\ClearanceModel.cs" />
+    <Compile Include="Models\Editable\IEditableModel.cs" />
+    <Compile Include="Models\Editable\IEditModel.cs" />
+    <Compile Include="Models\Employee\EmployeeEditModel.cs" />
+    <Compile Include="Models\Employee\EmployeeModel.cs" />
+    <Compile Include="Models\Household\HouseholdEditModel.cs" />
+    <Compile Include="Models\Household\HouseholdModel.cs" />
+    <Compile Include="Models\Livestock\LivestockEditModel.cs" />
+    <Compile Include="Models\Livestock\LivestockModel.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\Person\PersonEditModel.cs" />
+    <Compile Include="Models\Person\PersonModel.cs" />
+    <Compile Include="Models\Purok\PurokEditModel.cs" />
+    <Compile Include="Models\Purok\PurokModel.cs" />
+    <Compile Include="Modules\CaseModule.cs" />
+    <Compile Include="Modules\ClearanceModule.cs" />
+    <Compile Include="Modules\EmployeeModule.cs" />
+    <Compile Include="Modules\HouseholdPetsModule.cs" />
+    <Compile Include="Modules\HouseholdProfileModule.cs" />
+    <Compile Include="Modules\PersonModule.cs" />
+    <Compile Include="Modules\PurokModule.cs" />
+    <Compile Include="Modules\ViewModelLocator.cs" />
+    <Compile Include="Reports\Case\CaseDataSetModel.cs" />
+    <Compile Include="Reports\Case\CasePerson.cs" />
+    <Compile Include="Reports\Case\CaseReportWindow.xaml.cs">
+      <DependentUpon>CaseReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Clearance\ClearanceReportWindow.xaml.cs">
+      <DependentUpon>ClearanceReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Clearance\PersonDataSet.cs" />
+    <Compile Include="Reports\Clearance\Residency\ResidencyReportWindow.xaml.cs">
+      <DependentUpon>ResidencyReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Household\HouseholdDataSetModel.cs" />
+    <Compile Include="Reports\Household\HouseholdMembersDataSetModel.cs" />
+    <Compile Include="Reports\Household\HouseholdReportViewerWindow.xaml.cs">
+      <DependentUpon>HouseholdReportViewerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Livestock\AllPurokLivestockWindow.xaml.cs">
+      <DependentUpon>AllPurokLivestockWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Livestock\HouseholdLivestockWindow.xaml.cs">
+      <DependentUpon>HouseholdLivestockWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Livestock\PurokPets.cs" />
+    <Compile Include="Reports\Population\PopulationDataSetModel.cs" />
+    <Compile Include="Reports\Population\PopulationReportWindow.xaml.cs">
+      <DependentUpon>PopulationReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Population\PurokDataSetModel.cs" />
+    <Compile Include="Reports\Purok\AllPurokPersons.cs" />
+    <Compile Include="Reports\Purok\AllPurokPersonsReportWindow.xaml.cs">
+      <DependentUpon>AllPurokPersonsReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Purok\PurokPerson.cs" />
+    <Compile Include="Reports\Purok\PurokReportWindow.xaml.cs">
+      <DependentUpon>PurokReportWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValueConverters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="ValueConverters\NullToVisibilityConverter.cs" />
+    <Compile Include="View\Cases\AddCaseWindow.xaml.cs">
+      <DependentUpon>AddCaseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cases\CaseEditView.xaml.cs">
+      <DependentUpon>CaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cases\CaseInfoView.xaml.cs">
+      <DependentUpon>CaseInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cases\CaseListView.xaml.cs">
+      <DependentUpon>CaseListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Cases\CasesModuleView.xaml.cs">
+      <DependentUpon>CasesModuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Clearance\AddClearanceWindow.xaml.cs">
+      <DependentUpon>AddClearanceWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Clearance\ClearanceEditView.xaml.cs">
+      <DependentUpon>ClearanceEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Clearance\ClearanceModuleView.xaml.cs">
+      <DependentUpon>ClearanceModuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Clearance\Display\ClearanceInfoView.xaml.cs">
+      <DependentUpon>ClearanceInfoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Clearance\Display\ClearanceListView.xaml.cs">
+      <DependentUpon>ClearanceListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee\AddingEmployeeWindow.xaml.cs">
+      <DependentUpon>AddingEmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee\EmployeeEditView.xaml.cs">
+      <DependentUpon>EmployeeEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee\EmployeeInformationView.xaml.cs">
+      <DependentUpon>EmployeeInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee\EmployeeListWindow.xaml.cs">
+      <DependentUpon>EmployeeListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employee\EmployeeModuleView.xaml.cs">
+      <DependentUpon>EmployeeModuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Login\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Family\AddFamilyHeadWindow.xaml.cs">
+      <DependentUpon>AddFamilyHeadWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Family\AddFamilyMemberWindow.xaml.cs">
+      <DependentUpon>AddFamilyMemberWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Family\AddHouseholdWindow.xaml.cs">
+      <DependentUpon>AddHouseholdWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Family\EditFamilyMembersView.xaml.cs">
+      <DependentUpon>EditFamilyMembersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Family\EditHouseholdHeadView.xaml.cs">
+      <DependentUpon>EditHouseholdHeadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Family\FamilyHeadEditInformationView.xaml.cs">
+      <DependentUpon>FamilyHeadEditInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Family\FamilyInformationView.xaml.cs">
+      <DependentUpon>FamilyInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Family\FamilyMembersView.xaml.cs">
+      <DependentUpon>FamilyMembersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Family\FamilyModuleView.xaml.cs">
+      <DependentUpon>FamilyModuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\HouseholdListView.xaml.cs">
+      <DependentUpon>HouseholdListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\HouseholdView.xaml.cs">
+      <DependentUpon>HouseholdView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Pets\AddPetWindow.xaml.cs">
+      <DependentUpon>AddPetWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Pets\PetEditInformationView.xaml.cs">
+      <DependentUpon>PetEditInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Pets\PetInformationView.xaml.cs">
+      <DependentUpon>PetInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Pets\PetsListView.xaml.cs">
+      <DependentUpon>PetsListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Pets\PetsModuleView.xaml.cs">
+      <DependentUpon>PetsModuleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Profile\EditProfileInformationView.xaml.cs">
+      <DependentUpon>EditProfileInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Profile\ProfileInformationView.xaml.cs">
+      <DependentUpon>ProfileInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Household\Profile\ProfileModuleVIew.xaml.cs">
+      <DependentUpon>ProfileModuleVIew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Purok\AddPurokWindow.xaml.cs">
+      <DependentUpon>AddPurokWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Purok\Print\PurokPrintSelection.xaml.cs">
+      <DependentUpon>PurokPrintSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Purok\PurokEditInformationView.xaml.cs">
+      <DependentUpon>PurokEditInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Purok\PurokInformationView.xaml.cs">
+      <DependentUpon>PurokInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Purok\PurokListView.xaml.cs">
+      <DependentUpon>PurokListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Population\Purok\PurokModuleView.xaml.cs">
+      <DependentUpon>PurokModuleView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Helpers\ReportViewer\ReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Reports\Case\CaseReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Clearance\ClearanceReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Clearance\Residency\ResidencyReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Household\HouseholdReportViewerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Livestock\AllPurokLivestockWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Livestock\HouseholdLivestockWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Population\PopulationReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Purok\AllPurokPersonsReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reports\Purok\PurokReportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\MyStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ValueConverters\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Cases\AddCaseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Cases\CaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Cases\CaseInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Cases\CaseListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Cases\CasesModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Clearance\AddClearanceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Clearance\ClearanceEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Clearance\ClearanceModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Clearance\Display\ClearanceInfoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Clearance\Display\ClearanceListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Employee\AddingEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Employee\EmployeeEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Employee\EmployeeInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Employee\EmployeeListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Employee\EmployeeModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Family\AddFamilyHeadWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Family\AddFamilyMemberWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Family\AddHouseholdWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Family\EditFamilyMembersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Family\EditHouseholdHeadView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Family\FamilyHeadEditInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Family\FamilyInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Family\FamilyMembersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Family\FamilyModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\HouseholdListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\HouseholdView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Pets\AddPetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Pets\PetEditInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Pets\PetInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Pets\PetsListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Pets\PetsModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Profile\EditProfileInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Profile\ProfileInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Household\Profile\ProfileModuleVIew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Purok\AddPurokWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Purok\Print\PurokPrintSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Purok\PurokEditInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Purok\PurokInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Purok\PurokListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Population\Purok\PurokModuleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Case\CaseReport.rdlc" />
+    <EmbeddedResource Include="Reports\Clearance\ClearanceReport.rdlc" />
+    <EmbeddedResource Include="Reports\Clearance\Residency\ResidencyReport.rdlc" />
+    <EmbeddedResource Include="Reports\Household\HouseholdReportViewer.rdlc" />
+    <EmbeddedResource Include="Reports\Livestock\AllPurokLivestockReport.rdlc" />
+    <EmbeddedResource Include="Reports\Livestock\HouseholdLivestockReport.rdlc" />
+    <EmbeddedResource Include="Reports\Population\PopulationReport.rdlc" />
+    <EmbeddedResource Include="Reports\Purok\AllPurokPersonsReport.rdlc" />
+    <EmbeddedResource Include="Reports\Purok\PurokReport.rdlc" />
+    <None Include="DataAccess\EF\EF.Reverse.POCO.Core.ttinclude" />
+    <None Include="DataAccess\EF\EF.Reverse.POCO.ttinclude" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.Accessor.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.AccessorConfiguration.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.BarangaySasaContext.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.Case.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.CaseConfiguration.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.Clearance.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.Complainant.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.ComplainantConfiguration.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.EfRepository.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.Employee.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.EmployeeConfiguration.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.FakeBarangaySasaContext.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.FakeDbAsyncEnumerable`1[].datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.FakeDbAsyncEnumerator`1[].datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.FakeDbAsyncQueryProvider`1[].datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.FakeDbSet`1[].datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.Household.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.HouseholdConfiguration.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.IBarangaySasaContext.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.Livestock.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.LivestockConfiguration.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.Person.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.PersonConfiguration.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.Purok.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.PurokConfiguration.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.Respondent.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.RespondentConfiguration.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.Sysdiagram.datasource" />
+    <None Include="Properties\DataSources\Sasa.DataAccess.EF.SysdiagramConfiguration.datasource" />
+    <None Include="Properties\DataSources\Sasa.Reports.Case.CaseDataSetModel.datasource" />
+    <None Include="Properties\DataSources\Sasa.Reports.Case.CasePerson.datasource" />
+    <None Include="Properties\DataSources\Sasa.Reports.Clearance.PersonDataSet.datasource" />
+    <None Include="Properties\DataSources\Sasa.Reports.Household.HouseholdDataSetModel.datasource" />
+    <None Include="Properties\DataSources\Sasa.Reports.Household.HouseholdMembersDataSetModel.datasource" />
+    <None Include="Properties\DataSources\Sasa.Reports.Livestock.PurokPets.datasource" />
+    <None Include="Properties\DataSources\Sasa.Reports.Population.PopulationDataSetModel.datasource" />
+    <None Include="Properties\DataSources\Sasa.Reports.Population.PurokDataSetModel.datasource" />
+    <None Include="Properties\DataSources\Sasa.Reports.Purok.AllPurokPersons.datasource" />
+    <None Include="Properties\DataSources\Sasa.Reports.Purok.PurokPerson.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SEAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataAccess\EF\SasaGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SasaGenerator.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

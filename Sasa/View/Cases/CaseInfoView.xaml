@@ -1,0 +1,147 @@
+﻿<UserControl
+    x:Class="Sasa.View.Cases.CaseInfoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Sasa.View.Cases"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="500"
+    d:DesignWidth="300"
+    DataContext="{Binding Path=CaseModule.SelectedCase, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+    <Grid>
+        <materialDesign:Card
+            Padding="5"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            materialDesign:ShadowAssist.ShadowDepth="Depth3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <materialDesign:ColorZone
+                    Padding="7"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                    Mode="PrimaryMid">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="WhiteSmoke"
+                            Text="CASE INFORMATION" />
+                        <StackPanel
+                            Grid.Column="1"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+
+                            <Button
+                                Margin="3,0,3,0"
+                                Padding="0"
+                                Command="{Binding Path=CaseModule.SelectedCase.EditCommand, Source={StaticResource Locator}}"
+                                Style="{DynamicResource MaterialDesignFlatButton}"
+                                ToolTip="Edit selected case"
+                                Visibility="{Binding Path=EmployeeModule.EmployeeLogged.IsClerk, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=inverse, Source={StaticResource Locator}}">
+                                <materialDesign:PackIcon
+                                    Width="24"
+                                    Height="24"
+                                    Foreground="{StaticResource SecondaryAccentBrush}"
+                                    Kind="Pencil" />
+                            </Button>
+                        </StackPanel>
+
+                    </Grid>
+                </materialDesign:ColorZone>
+
+                <StackPanel Grid.Row="1" Margin="7,10,0,0">
+
+
+                    <StackPanel Margin="0,10,0,10">
+                        <TextBlock Style="{StaticResource txtDisplayLabel}" Text="ID" />
+                        <TextBlock Style="{StaticResource txtInfo}" Text="{Binding Path=Model.CaseId}" />
+                    </StackPanel>
+
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Style="{StaticResource txtDisplayLabel}" Text="CASE SUMMARY" />
+                        <TextBlock Style="{StaticResource txtInfo}" Text="{Binding Path=Model.CaseName}" />
+                    </StackPanel>
+
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Style="{StaticResource txtDisplayLabel}" Text="CASE DESCRIPTION" />
+                        <TextBlock
+                            Style="{StaticResource txtInfo}"
+                            Text="{Binding Path=Model.CaseDescription}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Margin="0,0,0,10">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="HEARING DATE" />
+                            <TextBlock Style="{StaticResource txtInfo}" Text="{Binding Path=Model.CaseHearingDate, StringFormat=D}" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="0,0,0,10">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="LEVEL" />
+                            <TextBlock Style="{StaticResource txtInfo}" Text="{Binding Path=Model.CaseLevel}" />
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Margin="0,0,0,10">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="COMPLAINANT" />
+                            <TextBlock Style="{StaticResource txtInfo}" Text="{Binding Path=Model.Complainant}" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Margin="0,0,0,10">
+                            <TextBlock Style="{StaticResource txtDisplayLabel}" Text="RESPONDENT" />
+
+                            <Grid>
+                                <TextBlock Style="{StaticResource txtInfo}" Visibility="{Binding Path=CaseModule.getRespondent, Converter={StaticResource NullToVisibilityConverter}, Source={StaticResource Locator}}">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0} {1}">
+                                            <Binding Path="CaseModule.getRespondent.FirstName" Source="{StaticResource Locator}" />
+                                            <Binding Path="CaseModule.getRespondent.LastName" Source="{StaticResource Locator}" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+
+
+                                <TextBlock
+                                    Style="{StaticResource txtInfo}"
+                                    Text="{Binding Path=CaseModule.SelectedCase.Model.RepondentOpt, Source={StaticResource Locator}}"
+                                    Visibility="{Binding Path=CaseModule.getRespondent, Converter={StaticResource NullToVisibilityConverter}, ConverterParameter=inverse, Source={StaticResource Locator}}" />
+                            </Grid>
+
+                        </StackPanel>
+                    </Grid>
+
+
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Style="{StaticResource txtDisplayLabel}" Text="STATUS" />
+                        <TextBlock Style="{StaticResource txtInfo}" Text="{Binding Path=Model.CaseStatus}" />
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+
+
+        </materialDesign:Card>
+
+
+    </Grid>
+</UserControl>

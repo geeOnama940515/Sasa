@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="Sasa.View.Population.Household.Profile.ProfileModuleVIew"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:family="clr-namespace:Sasa.View.Population.Household.Family"
+    xmlns:local="clr-namespace:Sasa.View.Population.Household.Profile"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="300"
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+    <Grid>
+        <TextBlock
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Text="Household information will be shown here."
+            Visibility="{Binding Path=PersonModule.SelectedHousehold, Converter={StaticResource NullToVisibilityConverter}, ConverterParameter=inverse, Source={StaticResource Locator}}" />
+
+
+        <Grid Margin="5" Visibility="{Binding Path=PersonModule.SelectedHousehold, Converter={StaticResource NullToVisibilityConverter}, Source={StaticResource Locator}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <local:ProfileInformationView Visibility="{Binding Path=PersonModule.SelectedHousehold.isEditing, Converter={StaticResource BoolToVisibilityConverter}, Source={StaticResource Locator}}" />
+                <local:EditProfileInformationView Visibility="{Binding Path=PersonModule.SelectedHousehold.isEditing, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=inverse, Source={StaticResource Locator}}" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <family:FamilyInformationView />
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
