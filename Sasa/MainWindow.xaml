@@ -97,7 +97,7 @@
                             BorderThickness="1"
                             Command="{Binding Path=EmployeeModule.LogoutCommand, Source={StaticResource Locator}}"
                             Content="LOGOUT"
-                            Foreground="White" />
+                            Foreground="WhiteSmoke" />
                     </StackPanel>
 
                 </StackPanel>
